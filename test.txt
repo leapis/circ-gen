@@ -1,0 +1,28 @@
+-n
+
+Getting her $degree was challenging, $Lastname1 said.
+
+It took her five years to get her $degree.
+
+She + completed her $degree in 2009.
+
+She never completed her $degree.
+
+#
+$degree =
+:: master’s
+master';master' feedback
+Master's; Master's feedback
+masters;
+Masters;
+MA;
+:: bachelor’s
+bachelor's;
+bachelors;
+Bachelors;
+BA;
+::doctorate
+doctorate;
+PhD;
+Ph.D;
+@
