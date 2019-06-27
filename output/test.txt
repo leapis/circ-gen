@@ -70,8 +70,8 @@ if(chosen==2){
 ArrayList<String> sentenceList = new ArrayList<String>();
 ArrayList<String> distractorList = new ArrayList<String>();
             
-sentenceList.add("Getting her " + degreeAnswer + " was challenging, " + LASTNAME1 + " said.");
-distractorList.add("Getting her " + degreeDistractor + " was challenging, " + LASTNAME1 + " said.");
+sentenceList.add("Getting her " + degreeAnswer + " was challenging, " + LASTNAME1.strip() + " said.");
+distractorList.add("Getting her " + degreeDistractor + " was challenging, " + LASTNAME1.strip() + " said.");
 sentenceList.add("It took her five years to get her " + degreeAnswer + ".");
 distractorList.add("It took her five years to get her " + degreeDistractor + ".");
 sentenceList.add("She + completed her " + degreeAnswer + " in 2009.");
