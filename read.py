@@ -2,16 +2,19 @@ from flags import flags
 import json
 import re
 import staticData as sd
+import sys
 
-CLASSNAME = "Testing1"
+CLASSNAME = "DefaultTestName"
+if(sys.argv[2]):
+    CLASSNAME = sys.argv[2]
 HEADERLEN = 2
-ignoredChars = ["\n"]
+ignoredChars = ["\n","+"]
 replacedChars = [{'old':"\u2019", 'new':"'"}]
 allowCorrectAsDistractor = True
 
 #turn to enums?
-dynamicTokens = {'LASTNAME':'SUBJECT'}
-dynamicRelation = {'LASTNAME':'.getSubject_last_name()'}
+dynamicTokens = {'LASTNAME':'SUBJECT', 'PROPERNAME':'SUBJECT', 'PRONOUN':'SUBJECT'}
+dynamicRelation = {'LASTNAME':'.getSubject_last_name()', 'PROPERNAME':'.getSubject()', 'PRONOUN':'.getPronoun()'}
 dynamicCalls  = {
                     'SUBJECT' : 'SubjectModel {name} = JournalismController.selectRandom(subjectAccess.selectByNounType(Arrays.asList(new String[] {{"PROPERNAME"}}), Arrays.asList(Gender.values())))'
                 }
@@ -124,22 +127,26 @@ def writeFile(filename, inputs, distractors, strings, answers, dynamics):
     out.write(sd.DAOs)
     out.write("String chosenSentenceAnswer, chosenSentenceDistractor;\n")
     dynamicsList = []
+    dynamicsIndexList = []
     for dynamic in dynamics:
-        if(dynamic['index'] not in dynamicsList):
-            out.write(dynamicCalls[dynamicTokens[dynamic['token']]].format(name=dynamicTokens[dynamic['token']]+dynamic['index']) + ";\n")
+        if(dynamic not in dynamicsList):
+            if(dynamic['index'] not in dynamicsIndexList):
+                out.write(dynamicCalls[dynamicTokens[dynamic['token']]].format(name=dynamicTokens[dynamic['token']]+dynamic['index']) + ";\n")
+                dynamicsIndexList.append(dynamic['index'])
             out.write("String " + dynamic['token']+dynamic['index'] + " = " + dynamicTokens[dynamic['token']]+dynamic['index']+dynamicRelation[dynamic['token']] + ";\n")
-            dynamicsList.append(dynamic['index'])
+            dynamicsList.append(dynamic)
     out.write(sd.generateConstructorName(CLASSNAME))
+    out.write("\tint distractorIndex, chosen;")
     for varName in inputs.keys():
         i = 0
         out.write(
 """
 String {word}Answer, {word}Distractor;
 {word}Answer = {word}Distractor = "";
-int distractorIndex = 0;
+distractorIndex = 0;
 ArrayList<String> {word}List = new ArrayList<String>();
 """.format(word=varName))
-        out.write("""int chosen = rand.nextInt({num});\n""".format(num=len(answers[varName].keys())))
+        out.write("""chosen = rand.nextInt({num});\n""".format(num=len(answers[varName].keys())))
         for answer in answers[varName].keys():
             out.write("""if(chosen=={i}){{\n""".format(i=i))
             out.write("""\t{word}List = new ArrayList<String>();\n""".format(word=varName))
@@ -172,6 +179,7 @@ chosenSentenceDistractor = distractorList.get(sentenceIndex);""")
 def sanitize(word):
     for characters in replacedChars:
          word = word.replace(characters['old'], characters['new'])
+    word = re.sub(' +', ' ', word)
     return word
 
 def interface(strings):
@@ -183,7 +191,7 @@ def interface(strings):
                 temp, end, *rest = re.split("\$"+token,string,flags=re.IGNORECASE)
                 index = end[0]
                 string = re.sub("\$"+token + index,tokenize(token,index), string,1,flags=re.IGNORECASE)
-                print(string)
+                print("detected token in string: " + string)
                 dynamics.append({'token':token,'index': index})
         newStrings.append(string)
     return newStrings, dynamics
@@ -194,5 +202,8 @@ def tokenize(token,index):
 def jformat(word):
     print("nothing")
 
-readInput("test.txt")
+if(sys.argv[1]):
+    readInput(sys.argv[1])
+else:
+    readInput("test.txt")
 #readInput("./test.txt")

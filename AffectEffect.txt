@@ -1,0 +1,25 @@
+-n
+
+The strike + $AFFECTOREFFECT+ed + the nation.
+
+Imagination + $AFFECTOREFFECT+s + every aspect of our lives.
+
+Smoking + $AFFECTOREFFECT+s + our health.
+
+$PRONOUN + was + $AFFECTOREFFECT+ed + by the heat.
+
+$PROPERNAME+’s + kindness + $AFFECTOREFFECT+ed + $PRONOUN +.
+
+The snow had a predictable + $AFFECTOREFFECT + on traffic.
+
+The rule is still in + $AFFECTOREFFECT +.
+
+One + $AFFECTOREFFECT + of overeating may be obesity.
+
+My father’s death had a profound + $AFFECTOREFFECT + on us all.
+
+The crisis had a negative +  $AFFECTOREFFECT + on trade.
+
+#
+$AFFECTOREFFECT=
+

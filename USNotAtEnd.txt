@@ -1,0 +1,29 @@
+-n
+
+We have lived in the $US for ten years.
+
+We were born in the $US , many years ago.
+
+The $US delegate plans to attend the meeting.
+
+$PROPERNAME1 moved from the $US + to Canada.
+
+$PROPERNAME1 works out of the $US + office.
+
+The company’s headquarters isn’t located in the $US anymore.
+
+The right to free speech is clearly stated in the $US Constitution.
+
+Some parts of the $US are particularly beautiful.
+
+$PROPERNAME1 and $PROPERNAME2 are from New Zealand and could not get + $US + work permits.
+
+I think $PROPERNAME1 was born in the + $US + but emigrated to the UK.
+
+#
+
+$US =
+:: U.S.
+US;
+U.S;
+@

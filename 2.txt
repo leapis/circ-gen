@@ -1,0 +1,21 @@
+-n
+
+That  + $PROPERNAME+ $subject(row 87 OR row 92 OR row 97 or row 104)+.
+
+Do you have + $PROPERNAME+  + $subject(row 87 OR row 92 OR row 97 or row 104)+?
+
+He had + $PROPERNAME+  $subject(row 87 OR row 92 OR row 97 or row 1043) + last night.
+
+She held onto + $PROPERNAME+  $subject(row 87 OR row 92 OR row 97 or row 104).
+
+Do you remember where I put + $PROPERNAME+  + $subject(row 87 OR row 92 OR row 97 or row 104)+?
+
+Who was the last person to see + $PROPERNAME+  + $subject(row 87 OR row 92 OR row 97 or row 104)+?
+
+I think + $PROPERNAME+  + $subject(row 87 OR row 92 OR row 97 or row 104)  + is in my office.
+
+I accidentally took + $PROPERNAME+  + $subject(row 87 OR row 92 OR row 97 or row 104)  + home.
+
+#
+$PROPERNAME =
+::

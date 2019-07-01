@@ -1,0 +1,33 @@
+-n
+
+The right to a free press is fundamental in the $US.
+
+The species is native to the $US.
+
+She does not plan to visit the $US.
+
+This August, the company is expected to open a branch in the $US.
+
+He can’t get a work permit for the $US.
+
+The airline only flies within the $US.
+
+You need to contact the $UN.
+
+The organization that tries to maintain international peace and security is called the $UN.
+
+There is definitely reason for concern, according to a new report by the $UN.
+
+One million species face extinction, according to the $UN.
+
+#
+$US =
+::U.S
+US;
+U.S.;
+
+$UN =
+::U.N
+UN;
+U.N.;
+@

@@ -17,68 +17,70 @@ import edu.rutgers.elearning.component.journalism.model.*;
 import edu.rutgers.elearning.component.journalism.model.SubjectModel.Gender;
 import edu.rutgers.elearning.component.journalism.pte.JournalismController;
 
-public class DegreeFull extends ProblemTemplateEngine {
+public class AbbreviationAtEndOfSentence extends ProblemTemplateEngine {
 
 SubjectDAO subjectAccess = new SubjectDAO();
 Random rand = new Random();
 String chosenSentenceAnswer, chosenSentenceDistractor;
-SubjectModel SUBJECT1 = JournalismController.selectRandom(subjectAccess.selectByNounType(Arrays.asList(new String[] {"PROPERNAME"}), Arrays.asList(Gender.values())));
-String LASTNAME1 = SUBJECT1.getSubject_last_name();
 
-public DegreeFull(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
+public AbbreviationAtEndOfSentence(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
 	super(problemtemplate_id, criticalskill_ids, debugmode, type);
-
-String degreeAnswer, degreeDistractor;
-degreeAnswer = degreeDistractor = "";
-int distractorIndex = 0;
-ArrayList<String> degreeList = new ArrayList<String>();
-int chosen = rand.nextInt(3);
+	int distractorIndex, chosen;
+String USAnswer, USDistractor;
+USAnswer = USDistractor = "";
+distractorIndex = 0;
+ArrayList<String> USList = new ArrayList<String>();
+chosen = rand.nextInt(1);
 if(chosen==0){
-	degreeList = new ArrayList<String>();
-	degreeList.add("master's");
-	degreeList.add("master'");
-	degreeList.add("Master's");
-	degreeList.add("masters");
-	degreeList.add("Masters");
-	degreeList.add("MA");
+	USList = new ArrayList<String>();
+	USList.add("U.S");
+	USList.add("US");
+	USList.add("U.S.");
 
-	degreeAnswer = "master's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	USAnswer = "U.S";
+	distractorIndex = rand.nextInt(USList.size());
+	USDistractor = USList.get(distractorIndex);
 }
-if(chosen==1){
-	degreeList = new ArrayList<String>();
-	degreeList.add("bachelor's");
-	degreeList.add("bachelors");
-	degreeList.add("Bachelors");
-	degreeList.add("BA");
 
-	degreeAnswer = "bachelor's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
-}
-if(chosen==2){
-	degreeList = new ArrayList<String>();
-	degreeList.add("doctorate");
-	degreeList.add("PhD");
-	degreeList.add("Ph.D");
+String UNAnswer, UNDistractor;
+UNAnswer = UNDistractor = "";
+distractorIndex = 0;
+ArrayList<String> UNList = new ArrayList<String>();
+chosen = rand.nextInt(1);
+if(chosen==0){
+	UNList = new ArrayList<String>();
+	UNList.add("U.N");
+	UNList.add("UN");
+	UNList.add("U.N.");
 
-	degreeAnswer = "doctorate";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	UNAnswer = "U.N";
+	distractorIndex = rand.nextInt(UNList.size());
+	UNDistractor = UNList.get(distractorIndex);
 }
 
 ArrayList<String> sentenceList = new ArrayList<String>();
 ArrayList<String> distractorList = new ArrayList<String>();
             
-sentenceList.add("Getting her " + degreeAnswer + " was challenging, " + LASTNAME1.strip() + " said.");
-distractorList.add("Getting her " + degreeDistractor + " was challenging, " + LASTNAME1.strip() + " said.");
-sentenceList.add("It took her five years to get her " + degreeAnswer + ".");
-distractorList.add("It took her five years to get her " + degreeDistractor + ".");
-sentenceList.add("She + completed her " + degreeAnswer + " in 2009.");
-distractorList.add("She + completed her " + degreeDistractor + " in 2009.");
-sentenceList.add("She never completed her " + degreeAnswer + ".");
-distractorList.add("She never completed her " + degreeDistractor + ".");
+sentenceList.add("The right to a free press is fundamental in the " + USAnswer + ".");
+distractorList.add("The right to a free press is fundamental in the " + USDistractor + ".");
+sentenceList.add("The species is native to the " + USAnswer + ".");
+distractorList.add("The species is native to the " + USDistractor + ".");
+sentenceList.add("She does not plan to visit the " + USAnswer + ".");
+distractorList.add("She does not plan to visit the " + USDistractor + ".");
+sentenceList.add("This August, the company is expected to open a branch in the " + USAnswer + ".");
+distractorList.add("This August, the company is expected to open a branch in the " + USDistractor + ".");
+sentenceList.add("He can't get a work permit for the " + USAnswer + ".");
+distractorList.add("He can't get a work permit for the " + USDistractor + ".");
+sentenceList.add("The airline only flies within the " + USAnswer + ".");
+distractorList.add("The airline only flies within the " + USDistractor + ".");
+sentenceList.add("You need to contact the " + UNAnswer + ".");
+distractorList.add("You need to contact the " + UNDistractor + ".");
+sentenceList.add("The organization that tries to maintain international peace and security is called the " + UNAnswer + ".");
+distractorList.add("The organization that tries to maintain international peace and security is called the " + UNDistractor + ".");
+sentenceList.add("There is definitely reason for concern, according to a new report by the " + UNAnswer + ".");
+distractorList.add("There is definitely reason for concern, according to a new report by the " + UNDistractor + ".");
+sentenceList.add("One million species face extinction, according to the " + UNAnswer + ".");
+distractorList.add("One million species face extinction, according to the " + UNDistractor + ".");
 int sentenceIndex = rand.nextInt(sentenceList.size());
 chosenSentenceAnswer = sentenceList.get(sentenceIndex);
 chosenSentenceDistractor = distractorList.get(sentenceIndex);
