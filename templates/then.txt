@@ -1,0 +1,31 @@
+-n
+
+$PRONOUN1 + said something and + $THEN + rode ahead.
+
+Just + $THEN + the man came running into the hall and addressed the Prince.
+
+$PRONOUN1 + glanced at her and + $THEN + at + $PROPERNAME1 +.
+
+Now and + $THEN + they glanced at one another.
+
+$THEN + $PRONOUN1 + looked up to find the nest from which they had fallen.
+
+$PRONOUN1 + thinks you are better + $THAN + us.
+
+$PRONOUN1 + has lived more + $THAN + eighty years.
+
+No one could have been more private + $THAN + $PROPERNAME1 +.
+
+It was high, much higher + $THAN + $PRONOUN1 + could reach.
+
+This approach is even more flawed + $THAN + the first.
+
+#
+$THEN=
+::then
+than;wrong
+
+$THAN=
+::than
+then;wrong
+@

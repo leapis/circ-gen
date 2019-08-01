@@ -197,7 +197,7 @@ def interface(strings):
     return newStrings, dynamics
 
 def tokenize(token,index):
-    return '" + ' + token + index + '.strip() + "'
+    return '" + ' + token + index + '.trim() + "'
 
 def jformat(word):
     print("nothing")

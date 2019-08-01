@@ -1,0 +1,33 @@
+-n
+
+$PROPERNAME + $COMPLIMENT+ed + $PROPERNAME + on how nice she looked.
+
+$PRONOUN + is always fishing for + $COMPLIMENT+s +.
+
+I am not sure if it’s a + $COMPLIMENT + or an insult.
+
+The boy was surprised when a famous footballer + $COMPLIMENT+ed + his football skills.
+
+I wanted to + $COMPLIMENT + you for the wonderful speech you gave tonight.
+
+The cool + $COLOR + color + $COMPLEMENT+s + the warm + $COLOR + color very well.
+
+This rug is a nice + $COMPLEMENT + to the rest of the furniture in the room.
+
+Ketchup is a must-have + $COMPLEMENT + for French fries.
+
+These shoes are the perfect + $COMPLEMENT + to my outfit.
+
+This wine would be a nice + $COMPLEMENT + to grilled dishes.
+
+#
+$COMPLIMENT=
+::compliment
+complement;wrong
+
+$COMPLEMENT=
+::complement
+compliment;wrong
+@
+
+

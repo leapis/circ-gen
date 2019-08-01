@@ -1,0 +1,33 @@
+-n
+
+$PROPERNOUN1 $JrSr divorced last year.
+
+$PROPERNOUN1 $JrSr just bought a house.
+
+$PROPERNOUN1 $JrSr won a new car last week.
+
+I couldn’t find $PROPERNOUN1 $JrSr on Twitter.
+
+$PROPERNOUN1 $JrSr started $PRONOUN1 YouTube channel in 2015.
+
+Fire chief $PROPERNOUN1 $JrSr suspects arson.
+
+When $PROPERNOUN1 $JrSr first came to the company, $PRONOUN1 worked in the mailroom.
+
+$PROPERNOUN1 $JrSr was born in 1999 to wealthy parents.
+
+$PROPERNOUN1 $JrSr was one of four people injured in yesterday’s bus crash.
+
+Is $PROPERNOUN1 $JrSr going to college?
+
+#
+$JrSr =
+:: Jr.
+Junior;
+junior;
+jr.;
+:: Sr.
+Senior;
+senior;
+sr.;
+@

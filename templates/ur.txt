@@ -1,0 +1,31 @@
+-n
+
+Make + $YOUR + choice.
+
+Is this + $YOUR + bike?
+
+Does + $YOUR + dog bite?
+
+I am twice + $YOUR + age.
+
+Put + $YOUR + books away.
+
+$PRONOUN1 + will ask you when + $URE + ready.
+
+$URE + working way too much.
+
+$URE + one step ahead of me.
+
+$URE + engaged to + $PROPERNAME +?
+
+I hope + $URE + going to get the job done by the deadline.
+
+#
+$YOUR=
+::your
+you're;wrong
+
+$URE=
+::you're
+your;wrong
+@

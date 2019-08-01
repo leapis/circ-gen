@@ -1,0 +1,35 @@
+-n
+
+I did not + $ACCEPT + his + resignation.
+
+Did you + $ACCEPT + his + proposal?
+
+Give her a little time to + $ACCEPT + the + situation.
+
+It is still hard to + $ACCEPT + the terrible things that happened.
+
+I will + $ACCEPT + the offer.
+
+He learned to + $ACCEPT + that his new life was in Canada.
+
+Everybody was there + $EXCEPT + for + $PROPERNAME1 +.
+
+He likes all animals + $EXCEPT + for + $PROPERNAME1 +.
+
+Everyone was invited + $EXCEPT + for + $PROPERNAME1 +.
+
+The building was empty + $EXCEPT + for a + $PROPERNAME1.
+
+The building + $EXCEPT + for + $PROPERNAME1 +.
+
+I saw everyone + $EXCEPT + for + $PROPERNAME1 +.
+
+#
+$ACCEPT=
+::accept
+except;
+
+$EXCEPT=
+::except
+accept;
+@

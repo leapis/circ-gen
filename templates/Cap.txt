@@ -1,0 +1,31 @@
+-n
+
+He + was trying to raise enough + $CAPITAL + for his start-up business.
+
+I have invested all of my + $CAPITAL + in long term investments.
+
+Write your name in + $CAPITAL+s +.
+
+London is the + $CAPITAL + of England.
+
+$PRONOUN1 + abolished + $CAPITAL + punishment.
+
+The + $CAPITOL + was built in 1905-1907.
+
+A new + $CAPITOL + building was built after the original government structure was burned to the ground.
+
+Senators met at the US + $CAPITOL + building in Washington, D.C. to discuss new laws.
+
+I just took a tour of the Texas + $CAPITOL + building.
+
+They marched in procession to the + $CAPITOL + building.
+
+#
+$CAPITAL=
+::capital
+capitol;wrong
+
+$CAPITOL=
+::capitol
+capital;wrong
+@

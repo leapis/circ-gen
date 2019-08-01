@@ -17,68 +17,68 @@ import edu.rutgers.elearning.component.journalism.model.*;
 import edu.rutgers.elearning.component.journalism.model.SubjectModel.Gender;
 import edu.rutgers.elearning.component.journalism.pte.JournalismController;
 
-public class test2 extends ProblemTemplateEngine {
+public class ItsOr extends ProblemTemplateEngine {
 
 SubjectDAO subjectAccess = new SubjectDAO();
 Random rand = new Random();
 String chosenSentenceAnswer, chosenSentenceDistractor;
-SubjectModel SUBJECT1 = JournalismController.selectRandom(subjectAccess.selectByNounType(Arrays.asList(new String[] {"PROPERNAME"}), Arrays.asList(Gender.values())));
-String LASTNAME1 = SUBJECT1.getSubject_last_name();
 
-public test2(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
+public ItsOr(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
 	super(problemtemplate_id, criticalskill_ids, debugmode, type);
 	int distractorIndex, chosen;
-String degreeAnswer, degreeDistractor;
-degreeAnswer = degreeDistractor = "";
+String ONEAnswer, ONEDistractor;
+ONEAnswer = ONEDistractor = "";
 distractorIndex = 0;
-ArrayList<String> degreeList = new ArrayList<String>();
-chosen = rand.nextInt(3);
+ArrayList<String> ONEList = new ArrayList<String>();
+chosen = rand.nextInt(1);
 if(chosen==0){
-	degreeList = new ArrayList<String>();
-	degreeList.add("master's");
-	degreeList.add("master'");
-	degreeList.add("Master's");
-	degreeList.add("masters");
-	degreeList.add("Masters");
-	degreeList.add("MA");
+	ONEList = new ArrayList<String>();
+	ONEList.add("its");
+	ONEList.add("it's");
 
-	degreeAnswer = "master's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	ONEAnswer = "its";
+	distractorIndex = rand.nextInt(ONEList.size());
+	ONEDistractor = ONEList.get(distractorIndex);
 }
-if(chosen==1){
-	degreeList = new ArrayList<String>();
-	degreeList.add("bachelor's");
-	degreeList.add("bachelors");
-	degreeList.add("Bachelors");
-	degreeList.add("BA");
 
-	degreeAnswer = "bachelor's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
-}
-if(chosen==2){
-	degreeList = new ArrayList<String>();
-	degreeList.add("doctorate");
-	degreeList.add("PhD");
-	degreeList.add("Ph.D");
+String TWOAnswer, TWODistractor;
+TWOAnswer = TWODistractor = "";
+distractorIndex = 0;
+ArrayList<String> TWOList = new ArrayList<String>();
+chosen = rand.nextInt(1);
+if(chosen==0){
+	TWOList = new ArrayList<String>();
+	TWOList.add("it's");
+	TWOList.add("its");
 
-	degreeAnswer = "doctorate";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	TWOAnswer = "it's";
+	distractorIndex = rand.nextInt(TWOList.size());
+	TWODistractor = TWOList.get(distractorIndex);
 }
 
 ArrayList<String> sentenceList = new ArrayList<String>();
 ArrayList<String> distractorList = new ArrayList<String>();
             
-sentenceList.add("Getting her " + degreeAnswer + " was challenging, " + LASTNAME1.strip() + " said.");
-distractorList.add("Getting her " + degreeDistractor + " was challenging, " + LASTNAME1.strip() + " said.");
-sentenceList.add("It took her five years to get her " + degreeAnswer + ".");
-distractorList.add("It took her five years to get her " + degreeDistractor + ".");
-sentenceList.add("She completed her " + degreeAnswer + " in 2009.");
-distractorList.add("She completed her " + degreeDistractor + " in 2009.");
-sentenceList.add("She never completed her " + degreeAnswer + ".");
-distractorList.add("She never completed her " + degreeDistractor + ".");
+sentenceList.add("This cheese is past " + ONEAnswer + " expiration date.");
+distractorList.add("This cheese is past " + ONEDistractor + " expiration date.");
+sentenceList.add("This book is better than " + ONEAnswer + " cover would suggest.");
+distractorList.add("This book is better than " + ONEDistractor + " cover would suggest.");
+sentenceList.add("" + ONEAnswer + " greatest attribute is $1 flexibility.");
+distractorList.add("" + ONEDistractor + " greatest attribute is $1 flexibility.");
+sentenceList.add("The plant is in " + ONEAnswer + " pot.");
+distractorList.add("The plant is in " + ONEDistractor + " pot.");
+sentenceList.add("What is " + ONEAnswer + " country of origin?");
+distractorList.add("What is " + ONEDistractor + " country of origin?");
+sentenceList.add("" + TWOAnswer + " always raining here.");
+distractorList.add("" + TWODistractor + " always raining here.");
+sentenceList.add("" + TWOAnswer + " nice inside the house.");
+distractorList.add("" + TWODistractor + " nice inside the house.");
+sentenceList.add("I know " + TWOAnswer + " hard,but you”ll be okay.");
+distractorList.add("I know " + TWODistractor + " hard,but you”ll be okay.");
+sentenceList.add("She said " + TWOAnswer + " only a fifteen-minute drive.");
+distractorList.add("She said " + TWODistractor + " only a fifteen-minute drive.");
+sentenceList.add("" + TWOAnswer + " fun to go to the fair.");
+distractorList.add("" + TWODistractor + " fun to go to the fair.");
 int sentenceIndex = rand.nextInt(sentenceList.size());
 chosenSentenceAnswer = sentenceList.get(sentenceIndex);
 chosenSentenceDistractor = distractorList.get(sentenceIndex);

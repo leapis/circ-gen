@@ -1,0 +1,31 @@
+-n
+
+The basic + $PRINCIPLE + was that those who worked hard would be rewarded.
+
+It followed the + $PRINCIPLE+s + of sustainability.
+
+They work on a + $PRINCIPLE + of heat absorption.
+
+It is against my + $PRINCIPLE+s + to lie.
+
+I finally understand the basic + $PRINCIPLE+s + of calculus.
+
+The school + $PRINCIPAL + suspended + $PROPERNAME1 + for two days.
+
+Rice is my + $PRINCIPAL + food.
+
+This is one of the + $PRINCIPAL + arguments against your theory.
+
+The + $PRINCIPAL + part of this place is covered in hills.
+
+Electric tramways serve the + $PRINCIPAL + thoroughfares and suburbs.
+
+#
+$PRINCIPLE=
+::principle
+principal;wrong
+
+$PRINCIPAL=
+::principal
+principle;wrong
+@

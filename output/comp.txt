@@ -17,68 +17,71 @@ import edu.rutgers.elearning.component.journalism.model.*;
 import edu.rutgers.elearning.component.journalism.model.SubjectModel.Gender;
 import edu.rutgers.elearning.component.journalism.pte.JournalismController;
 
-public class test2 extends ProblemTemplateEngine {
+public class ComplimentOrComplement extends ProblemTemplateEngine {
 
 SubjectDAO subjectAccess = new SubjectDAO();
 Random rand = new Random();
 String chosenSentenceAnswer, chosenSentenceDistractor;
-SubjectModel SUBJECT1 = JournalismController.selectRandom(subjectAccess.selectByNounType(Arrays.asList(new String[] {"PROPERNAME"}), Arrays.asList(Gender.values())));
-String LASTNAME1 = SUBJECT1.getSubject_last_name();
+SubjectModel SUBJECT  = JournalismController.selectRandom(subjectAccess.selectByNounType(Arrays.asList(new String[] {"PROPERNAME"}), Arrays.asList(Gender.values())));
+String PROPERNAME  = SUBJECT .getSubject();
+String PRONOUN  = SUBJECT .getPronoun();
 
-public test2(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
+public ComplimentOrComplement(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
 	super(problemtemplate_id, criticalskill_ids, debugmode, type);
 	int distractorIndex, chosen;
-String degreeAnswer, degreeDistractor;
-degreeAnswer = degreeDistractor = "";
+String COMPLIMENTAnswer, COMPLIMENTDistractor;
+COMPLIMENTAnswer = COMPLIMENTDistractor = "";
 distractorIndex = 0;
-ArrayList<String> degreeList = new ArrayList<String>();
-chosen = rand.nextInt(3);
+ArrayList<String> COMPLIMENTList = new ArrayList<String>();
+chosen = rand.nextInt(1);
 if(chosen==0){
-	degreeList = new ArrayList<String>();
-	degreeList.add("master's");
-	degreeList.add("master'");
-	degreeList.add("Master's");
-	degreeList.add("masters");
-	degreeList.add("Masters");
-	degreeList.add("MA");
+	COMPLIMENTList = new ArrayList<String>();
+	COMPLIMENTList.add("compliment");
+	COMPLIMENTList.add("complement");
 
-	degreeAnswer = "master's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	COMPLIMENTAnswer = "compliment";
+	distractorIndex = rand.nextInt(COMPLIMENTList.size());
+	COMPLIMENTDistractor = COMPLIMENTList.get(distractorIndex);
 }
-if(chosen==1){
-	degreeList = new ArrayList<String>();
-	degreeList.add("bachelor's");
-	degreeList.add("bachelors");
-	degreeList.add("Bachelors");
-	degreeList.add("BA");
 
-	degreeAnswer = "bachelor's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
-}
-if(chosen==2){
-	degreeList = new ArrayList<String>();
-	degreeList.add("doctorate");
-	degreeList.add("PhD");
-	degreeList.add("Ph.D");
+String COMPLEMENTAnswer, COMPLEMENTDistractor;
+COMPLEMENTAnswer = COMPLEMENTDistractor = "";
+distractorIndex = 0;
+ArrayList<String> COMPLEMENTList = new ArrayList<String>();
+chosen = rand.nextInt(1);
+if(chosen==0){
+	COMPLEMENTList = new ArrayList<String>();
+	COMPLEMENTList.add("complement");
+	COMPLEMENTList.add("compliment");
 
-	degreeAnswer = "doctorate";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	COMPLEMENTAnswer = "complement";
+	distractorIndex = rand.nextInt(COMPLEMENTList.size());
+	COMPLEMENTDistractor = COMPLEMENTList.get(distractorIndex);
 }
 
 ArrayList<String> sentenceList = new ArrayList<String>();
 ArrayList<String> distractorList = new ArrayList<String>();
             
-sentenceList.add("Getting her " + degreeAnswer + " was challenging, " + LASTNAME1.strip() + " said.");
-distractorList.add("Getting her " + degreeDistractor + " was challenging, " + LASTNAME1.strip() + " said.");
-sentenceList.add("It took her five years to get her " + degreeAnswer + ".");
-distractorList.add("It took her five years to get her " + degreeDistractor + ".");
-sentenceList.add("She completed her " + degreeAnswer + " in 2009.");
-distractorList.add("She completed her " + degreeDistractor + " in 2009.");
-sentenceList.add("She never completed her " + degreeAnswer + ".");
-distractorList.add("She never completed her " + degreeDistractor + ".");
+sentenceList.add("" + PROPERNAME .strip() + "" + COMPLIMENTAnswer + "ed " + PROPERNAME .strip() + "on how nice she looked.");
+distractorList.add("" + PROPERNAME .strip() + "" + COMPLIMENTDistractor + "ed " + PROPERNAME .strip() + "on how nice she looked.");
+sentenceList.add("" + PRONOUN .strip() + "is always fishing for " + COMPLIMENTAnswer + "s .");
+distractorList.add("" + PRONOUN .strip() + "is always fishing for " + COMPLIMENTDistractor + "s .");
+sentenceList.add("I am not sure if it's a " + COMPLIMENTAnswer + " or an insult.");
+distractorList.add("I am not sure if it's a " + COMPLIMENTDistractor + " or an insult.");
+sentenceList.add("The boy was surprised when a famous footballer " + COMPLIMENTAnswer + "ed his football skills.");
+distractorList.add("The boy was surprised when a famous footballer " + COMPLIMENTDistractor + "ed his football skills.");
+sentenceList.add("I wanted to " + COMPLIMENTAnswer + " you for the wonderful speech you gave tonight.");
+distractorList.add("I wanted to " + COMPLIMENTDistractor + " you for the wonderful speech you gave tonight.");
+sentenceList.add("The cool $COLOR color " + COMPLEMENTAnswer + "s the warm $COLOR color very well.");
+distractorList.add("The cool $COLOR color " + COMPLEMENTDistractor + "s the warm $COLOR color very well.");
+sentenceList.add("This rug is a nice " + COMPLEMENTAnswer + " to the rest of the furniture in the room.");
+distractorList.add("This rug is a nice " + COMPLEMENTDistractor + " to the rest of the furniture in the room.");
+sentenceList.add("Ketchup is a must-have " + COMPLEMENTAnswer + " for French fries.");
+distractorList.add("Ketchup is a must-have " + COMPLEMENTDistractor + " for French fries.");
+sentenceList.add("These shoes are the perfect " + COMPLEMENTAnswer + " to my outfit.");
+distractorList.add("These shoes are the perfect " + COMPLEMENTDistractor + " to my outfit.");
+sentenceList.add("This wine would be a nice " + COMPLEMENTAnswer + " to grilled dishes.");
+distractorList.add("This wine would be a nice " + COMPLEMENTDistractor + " to grilled dishes.");
 int sentenceIndex = rand.nextInt(sentenceList.size());
 chosenSentenceAnswer = sentenceList.get(sentenceIndex);
 chosenSentenceDistractor = distractorList.get(sentenceIndex);

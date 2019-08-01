@@ -17,68 +17,72 @@ import edu.rutgers.elearning.component.journalism.model.*;
 import edu.rutgers.elearning.component.journalism.model.SubjectModel.Gender;
 import edu.rutgers.elearning.component.journalism.pte.JournalismController;
 
-public class test2 extends ProblemTemplateEngine {
+public class YourOrYoure extends ProblemTemplateEngine {
 
 SubjectDAO subjectAccess = new SubjectDAO();
 Random rand = new Random();
 String chosenSentenceAnswer, chosenSentenceDistractor;
 SubjectModel SUBJECT1 = JournalismController.selectRandom(subjectAccess.selectByNounType(Arrays.asList(new String[] {"PROPERNAME"}), Arrays.asList(Gender.values())));
-String LASTNAME1 = SUBJECT1.getSubject_last_name();
+String PRONOUN1 = SUBJECT1.getPronoun();
+SubjectModel SUBJECT  = JournalismController.selectRandom(subjectAccess.selectByNounType(Arrays.asList(new String[] {"PROPERNAME"}), Arrays.asList(Gender.values())));
+String PROPERNAME  = SUBJECT .getSubject();
 
-public test2(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
+public YourOrYoure(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
 	super(problemtemplate_id, criticalskill_ids, debugmode, type);
 	int distractorIndex, chosen;
-String degreeAnswer, degreeDistractor;
-degreeAnswer = degreeDistractor = "";
+String YOURAnswer, YOURDistractor;
+YOURAnswer = YOURDistractor = "";
 distractorIndex = 0;
-ArrayList<String> degreeList = new ArrayList<String>();
-chosen = rand.nextInt(3);
+ArrayList<String> YOURList = new ArrayList<String>();
+chosen = rand.nextInt(1);
 if(chosen==0){
-	degreeList = new ArrayList<String>();
-	degreeList.add("master's");
-	degreeList.add("master'");
-	degreeList.add("Master's");
-	degreeList.add("masters");
-	degreeList.add("Masters");
-	degreeList.add("MA");
+	YOURList = new ArrayList<String>();
+	YOURList.add("your");
+	YOURList.add("you're");
 
-	degreeAnswer = "master's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	YOURAnswer = "your";
+	distractorIndex = rand.nextInt(YOURList.size());
+	YOURDistractor = YOURList.get(distractorIndex);
 }
-if(chosen==1){
-	degreeList = new ArrayList<String>();
-	degreeList.add("bachelor's");
-	degreeList.add("bachelors");
-	degreeList.add("Bachelors");
-	degreeList.add("BA");
 
-	degreeAnswer = "bachelor's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
-}
-if(chosen==2){
-	degreeList = new ArrayList<String>();
-	degreeList.add("doctorate");
-	degreeList.add("PhD");
-	degreeList.add("Ph.D");
+String UREAnswer, UREDistractor;
+UREAnswer = UREDistractor = "";
+distractorIndex = 0;
+ArrayList<String> UREList = new ArrayList<String>();
+chosen = rand.nextInt(1);
+if(chosen==0){
+	UREList = new ArrayList<String>();
+	UREList.add("you're");
+	UREList.add("your");
 
-	degreeAnswer = "doctorate";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	UREAnswer = "you're";
+	distractorIndex = rand.nextInt(UREList.size());
+	UREDistractor = UREList.get(distractorIndex);
 }
 
 ArrayList<String> sentenceList = new ArrayList<String>();
 ArrayList<String> distractorList = new ArrayList<String>();
             
-sentenceList.add("Getting her " + degreeAnswer + " was challenging, " + LASTNAME1.strip() + " said.");
-distractorList.add("Getting her " + degreeDistractor + " was challenging, " + LASTNAME1.strip() + " said.");
-sentenceList.add("It took her five years to get her " + degreeAnswer + ".");
-distractorList.add("It took her five years to get her " + degreeDistractor + ".");
-sentenceList.add("She completed her " + degreeAnswer + " in 2009.");
-distractorList.add("She completed her " + degreeDistractor + " in 2009.");
-sentenceList.add("She never completed her " + degreeAnswer + ".");
-distractorList.add("She never completed her " + degreeDistractor + ".");
+sentenceList.add("Make " + YOURAnswer + " choice.");
+distractorList.add("Make " + YOURDistractor + " choice.");
+sentenceList.add("Is this " + YOURAnswer + " bike?");
+distractorList.add("Is this " + YOURDistractor + " bike?");
+sentenceList.add("Does " + YOURAnswer + " dog bite?");
+distractorList.add("Does " + YOURDistractor + " dog bite?");
+sentenceList.add("I am twice " + YOURAnswer + " age.");
+distractorList.add("I am twice " + YOURDistractor + " age.");
+sentenceList.add("Put " + YOURAnswer + " books away.");
+distractorList.add("Put " + YOURDistractor + " books away.");
+sentenceList.add("" + PRONOUN1.strip() + " will ask you when " + UREAnswer + " ready.");
+distractorList.add("" + PRONOUN1.strip() + " will ask you when " + UREDistractor + " ready.");
+sentenceList.add("" + UREAnswer + " working way too much.");
+distractorList.add("" + UREDistractor + " working way too much.");
+sentenceList.add("" + UREAnswer + " one step ahead of me.");
+distractorList.add("" + UREDistractor + " one step ahead of me.");
+sentenceList.add("" + UREAnswer + " engaged to " + PROPERNAME .strip() + "?");
+distractorList.add("" + UREDistractor + " engaged to " + PROPERNAME .strip() + "?");
+sentenceList.add("I hope " + UREAnswer + " going to get the job done by the deadline.");
+distractorList.add("I hope " + UREDistractor + " going to get the job done by the deadline.");
 int sentenceIndex = rand.nextInt(sentenceList.size());
 chosenSentenceAnswer = sentenceList.get(sentenceIndex);
 chosenSentenceDistractor = distractorList.get(sentenceIndex);

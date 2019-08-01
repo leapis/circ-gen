@@ -17,68 +17,70 @@ import edu.rutgers.elearning.component.journalism.model.*;
 import edu.rutgers.elearning.component.journalism.model.SubjectModel.Gender;
 import edu.rutgers.elearning.component.journalism.pte.JournalismController;
 
-public class test2 extends ProblemTemplateEngine {
+public class CapitalOrCapitol extends ProblemTemplateEngine {
 
 SubjectDAO subjectAccess = new SubjectDAO();
 Random rand = new Random();
 String chosenSentenceAnswer, chosenSentenceDistractor;
 SubjectModel SUBJECT1 = JournalismController.selectRandom(subjectAccess.selectByNounType(Arrays.asList(new String[] {"PROPERNAME"}), Arrays.asList(Gender.values())));
-String LASTNAME1 = SUBJECT1.getSubject_last_name();
+String PRONOUN1 = SUBJECT1.getPronoun();
 
-public test2(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
+public CapitalOrCapitol(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
 	super(problemtemplate_id, criticalskill_ids, debugmode, type);
 	int distractorIndex, chosen;
-String degreeAnswer, degreeDistractor;
-degreeAnswer = degreeDistractor = "";
+String CAPITALAnswer, CAPITALDistractor;
+CAPITALAnswer = CAPITALDistractor = "";
 distractorIndex = 0;
-ArrayList<String> degreeList = new ArrayList<String>();
-chosen = rand.nextInt(3);
+ArrayList<String> CAPITALList = new ArrayList<String>();
+chosen = rand.nextInt(1);
 if(chosen==0){
-	degreeList = new ArrayList<String>();
-	degreeList.add("master's");
-	degreeList.add("master'");
-	degreeList.add("Master's");
-	degreeList.add("masters");
-	degreeList.add("Masters");
-	degreeList.add("MA");
+	CAPITALList = new ArrayList<String>();
+	CAPITALList.add("capital");
+	CAPITALList.add("capitol");
 
-	degreeAnswer = "master's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	CAPITALAnswer = "capital";
+	distractorIndex = rand.nextInt(CAPITALList.size());
+	CAPITALDistractor = CAPITALList.get(distractorIndex);
 }
-if(chosen==1){
-	degreeList = new ArrayList<String>();
-	degreeList.add("bachelor's");
-	degreeList.add("bachelors");
-	degreeList.add("Bachelors");
-	degreeList.add("BA");
 
-	degreeAnswer = "bachelor's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
-}
-if(chosen==2){
-	degreeList = new ArrayList<String>();
-	degreeList.add("doctorate");
-	degreeList.add("PhD");
-	degreeList.add("Ph.D");
+String CAPITOLAnswer, CAPITOLDistractor;
+CAPITOLAnswer = CAPITOLDistractor = "";
+distractorIndex = 0;
+ArrayList<String> CAPITOLList = new ArrayList<String>();
+chosen = rand.nextInt(1);
+if(chosen==0){
+	CAPITOLList = new ArrayList<String>();
+	CAPITOLList.add("capitol");
+	CAPITOLList.add("capital");
 
-	degreeAnswer = "doctorate";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	CAPITOLAnswer = "capitol";
+	distractorIndex = rand.nextInt(CAPITOLList.size());
+	CAPITOLDistractor = CAPITOLList.get(distractorIndex);
 }
 
 ArrayList<String> sentenceList = new ArrayList<String>();
 ArrayList<String> distractorList = new ArrayList<String>();
             
-sentenceList.add("Getting her " + degreeAnswer + " was challenging, " + LASTNAME1.strip() + " said.");
-distractorList.add("Getting her " + degreeDistractor + " was challenging, " + LASTNAME1.strip() + " said.");
-sentenceList.add("It took her five years to get her " + degreeAnswer + ".");
-distractorList.add("It took her five years to get her " + degreeDistractor + ".");
-sentenceList.add("She completed her " + degreeAnswer + " in 2009.");
-distractorList.add("She completed her " + degreeDistractor + " in 2009.");
-sentenceList.add("She never completed her " + degreeAnswer + ".");
-distractorList.add("She never completed her " + degreeDistractor + ".");
+sentenceList.add("He was trying to raise enough " + CAPITALAnswer + " for his start-up business.");
+distractorList.add("He was trying to raise enough " + CAPITALDistractor + " for his start-up business.");
+sentenceList.add("I have invested all of my " + CAPITALAnswer + " in long term investments.");
+distractorList.add("I have invested all of my " + CAPITALDistractor + " in long term investments.");
+sentenceList.add("Write your name in " + CAPITALAnswer + "s .");
+distractorList.add("Write your name in " + CAPITALDistractor + "s .");
+sentenceList.add("London is the " + CAPITALAnswer + " of England.");
+distractorList.add("London is the " + CAPITALDistractor + " of England.");
+sentenceList.add("" + PRONOUN1.strip() + " abolished " + CAPITALAnswer + " punishment.");
+distractorList.add("" + PRONOUN1.strip() + " abolished " + CAPITALDistractor + " punishment.");
+sentenceList.add("The " + CAPITOLAnswer + " was built in 1905-1907.");
+distractorList.add("The " + CAPITOLDistractor + " was built in 1905-1907.");
+sentenceList.add("A new " + CAPITOLAnswer + " building was built after the original government structure was burned to the ground.");
+distractorList.add("A new " + CAPITOLDistractor + " building was built after the original government structure was burned to the ground.");
+sentenceList.add("Senators met at the US " + CAPITOLAnswer + " building in Washington, D.C. to discuss new laws.");
+distractorList.add("Senators met at the US " + CAPITOLDistractor + " building in Washington, D.C. to discuss new laws.");
+sentenceList.add("I just took a tour of the Texas " + CAPITOLAnswer + " building.");
+distractorList.add("I just took a tour of the Texas " + CAPITOLDistractor + " building.");
+sentenceList.add("They marched in procession to the " + CAPITOLAnswer + " building.");
+distractorList.add("They marched in procession to the " + CAPITOLDistractor + " building.");
 int sentenceIndex = rand.nextInt(sentenceList.size());
 chosenSentenceAnswer = sentenceList.get(sentenceIndex);
 chosenSentenceDistractor = distractorList.get(sentenceIndex);

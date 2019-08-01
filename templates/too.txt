@@ -1,0 +1,31 @@
+-n
+
+$PRONOUN1 + doesn’t talk + $TO + me any more.
+
+Get back + $TO + work!
+
+I need + $TO + get away from here.
+
+$PROPERNAME1 + $TO + be blamed for this.
+
+Listen + $TO + me carefully.
+
+$PROPERNAME1 + was + $TOO + late for the party.
+
+I am + $TOO + busy to meet you today.
+
+$PRONOUN1 + is + $TOO + old to do things on his own.
+
+$PROPERNAME1 + was + $TOO + shy to approach him.
+
+I am + $TOO + tired to go out now.
+
+#
+$TOO=
+::too
+to;wrong
+
+$TO=
+::to
+too;wrong
+@

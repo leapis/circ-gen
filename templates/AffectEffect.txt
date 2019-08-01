@@ -1,0 +1,31 @@
+-n
+
+The strike + $AFFECT+ed + the nation.
+
+Imagination + $AFFECT+s + every aspect of our lives.
+
+Smoking + $AFFECT+s + our health.
+
+$PRONOUN1 + was + $AFFECT+ed + by the heat.
+
+$PROPERNAME1+’s + kindness + $AFFECT+ed + $PRONOUN1 +.
+
+The snow had a predictable + $EFFECT + on traffic.
+
+The rule is still in + $EFFECT +.
+
+One + $EFFECT + of overeating may be obesity.
+
+My father’s death had a profound + $EFFECT + on us all.
+
+The crisis had a negative +  $EFFECT + on trade.
+
+#
+$AFFECT=
+::affect
+effect;wrong
+
+$EFFECT=
+::effect
+affect;wrong
+@

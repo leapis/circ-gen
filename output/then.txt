@@ -17,68 +17,71 @@ import edu.rutgers.elearning.component.journalism.model.*;
 import edu.rutgers.elearning.component.journalism.model.SubjectModel.Gender;
 import edu.rutgers.elearning.component.journalism.pte.JournalismController;
 
-public class test2 extends ProblemTemplateEngine {
+public class ThenOrThan extends ProblemTemplateEngine {
 
 SubjectDAO subjectAccess = new SubjectDAO();
 Random rand = new Random();
 String chosenSentenceAnswer, chosenSentenceDistractor;
 SubjectModel SUBJECT1 = JournalismController.selectRandom(subjectAccess.selectByNounType(Arrays.asList(new String[] {"PROPERNAME"}), Arrays.asList(Gender.values())));
-String LASTNAME1 = SUBJECT1.getSubject_last_name();
+String PRONOUN1 = SUBJECT1.getPronoun();
+String PROPERNAME1 = SUBJECT1.getSubject();
 
-public test2(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
+public ThenOrThan(int problemtemplate_id, int[] criticalskill_ids, int debugmode, QuestionType type) {
 	super(problemtemplate_id, criticalskill_ids, debugmode, type);
 	int distractorIndex, chosen;
-String degreeAnswer, degreeDistractor;
-degreeAnswer = degreeDistractor = "";
+String THENAnswer, THENDistractor;
+THENAnswer = THENDistractor = "";
 distractorIndex = 0;
-ArrayList<String> degreeList = new ArrayList<String>();
-chosen = rand.nextInt(3);
+ArrayList<String> THENList = new ArrayList<String>();
+chosen = rand.nextInt(1);
 if(chosen==0){
-	degreeList = new ArrayList<String>();
-	degreeList.add("master's");
-	degreeList.add("master'");
-	degreeList.add("Master's");
-	degreeList.add("masters");
-	degreeList.add("Masters");
-	degreeList.add("MA");
+	THENList = new ArrayList<String>();
+	THENList.add("then");
+	THENList.add("than");
 
-	degreeAnswer = "master's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	THENAnswer = "then";
+	distractorIndex = rand.nextInt(THENList.size());
+	THENDistractor = THENList.get(distractorIndex);
 }
-if(chosen==1){
-	degreeList = new ArrayList<String>();
-	degreeList.add("bachelor's");
-	degreeList.add("bachelors");
-	degreeList.add("Bachelors");
-	degreeList.add("BA");
 
-	degreeAnswer = "bachelor's";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
-}
-if(chosen==2){
-	degreeList = new ArrayList<String>();
-	degreeList.add("doctorate");
-	degreeList.add("PhD");
-	degreeList.add("Ph.D");
+String THANAnswer, THANDistractor;
+THANAnswer = THANDistractor = "";
+distractorIndex = 0;
+ArrayList<String> THANList = new ArrayList<String>();
+chosen = rand.nextInt(1);
+if(chosen==0){
+	THANList = new ArrayList<String>();
+	THANList.add("than");
+	THANList.add("then");
 
-	degreeAnswer = "doctorate";
-	distractorIndex = rand.nextInt(degreeList.size());
-	degreeDistractor = degreeList.get(distractorIndex);
+	THANAnswer = "than";
+	distractorIndex = rand.nextInt(THANList.size());
+	THANDistractor = THANList.get(distractorIndex);
 }
 
 ArrayList<String> sentenceList = new ArrayList<String>();
 ArrayList<String> distractorList = new ArrayList<String>();
             
-sentenceList.add("Getting her " + degreeAnswer + " was challenging, " + LASTNAME1.strip() + " said.");
-distractorList.add("Getting her " + degreeDistractor + " was challenging, " + LASTNAME1.strip() + " said.");
-sentenceList.add("It took her five years to get her " + degreeAnswer + ".");
-distractorList.add("It took her five years to get her " + degreeDistractor + ".");
-sentenceList.add("She completed her " + degreeAnswer + " in 2009.");
-distractorList.add("She completed her " + degreeDistractor + " in 2009.");
-sentenceList.add("She never completed her " + degreeAnswer + ".");
-distractorList.add("She never completed her " + degreeDistractor + ".");
+sentenceList.add("" + PRONOUN1.strip() + " said something and " + THENAnswer + " rode ahead.");
+distractorList.add("" + PRONOUN1.strip() + " said something and " + THENDistractor + " rode ahead.");
+sentenceList.add("Just " + THENAnswer + " the man came running into the hall and addressed the Prince.");
+distractorList.add("Just " + THENDistractor + " the man came running into the hall and addressed the Prince.");
+sentenceList.add("" + PRONOUN1.strip() + " glanced at her and " + THENAnswer + " at " + PROPERNAME1.strip() + " .");
+distractorList.add("" + PRONOUN1.strip() + " glanced at her and " + THENDistractor + " at " + PROPERNAME1.strip() + " .");
+sentenceList.add("Now and " + THENAnswer + " they glanced at one another.");
+distractorList.add("Now and " + THENDistractor + " they glanced at one another.");
+sentenceList.add("" + THENAnswer + " " + PRONOUN1.strip() + " looked up to find the nest from which they had fallen.");
+distractorList.add("" + THENDistractor + " " + PRONOUN1.strip() + " looked up to find the nest from which they had fallen.");
+sentenceList.add("" + PRONOUN1.strip() + " thinks you are better " + THANAnswer + " us.");
+distractorList.add("" + PRONOUN1.strip() + " thinks you are better " + THANDistractor + " us.");
+sentenceList.add("" + PRONOUN1.strip() + " has lived more " + THANAnswer + " eighty years.");
+distractorList.add("" + PRONOUN1.strip() + " has lived more " + THANDistractor + " eighty years.");
+sentenceList.add("No one could have been more private " + THANAnswer + " " + PROPERNAME1.strip() + " .");
+distractorList.add("No one could have been more private " + THANDistractor + " " + PROPERNAME1.strip() + " .");
+sentenceList.add("It was high, much higher " + THANAnswer + " " + PRONOUN1.strip() + " could reach.");
+distractorList.add("It was high, much higher " + THANDistractor + " " + PRONOUN1.strip() + " could reach.");
+sentenceList.add("This approach is even more flawed " + THANAnswer + " the first.");
+distractorList.add("This approach is even more flawed " + THANDistractor + " the first.");
 int sentenceIndex = rand.nextInt(sentenceList.size());
 chosenSentenceAnswer = sentenceList.get(sentenceIndex);
 chosenSentenceDistractor = distractorList.get(sentenceIndex);

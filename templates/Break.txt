@@ -1,0 +1,29 @@
+-n
+
+The + $BRAKE+s + of the car  were too old to work properly.
+
+$PROPERNAME1 + stomped on the + $BRAKE + pedal and screeched to a halt.
+
+$PROPERNAME1 + pulled the emergency + $BRAKE +.
+
+I had the + $BRAKE+s + of my bicycle adjusted.
+
+Who wants to buy a motorcycle with squeaky + $BRAKE+s +?
+
+Take a + $BREAK + from work!
+
+$BREAK + things down for simplification.
+
+I didn’t + $BREAK + the glass.
+
+You will be punished if you + $BREAK + the jar.
+
+#
+$BRAKE=
+::brake
+break;wrong
+
+$BREAK=
+::break
+brake;wrong
+@

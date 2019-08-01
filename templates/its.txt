@@ -1,0 +1,31 @@
+-n
+
+This cheese is past + $ONE + expiration date.
+
+This book is better than + $ONE + cover would suggest.
+
+$ONE + greatest attribute is + $1 + flexibility.
+
+The plant is in + $ONE + pot.
+
+What is + $ONE + country of origin?
+
+$TWO + always raining here.
+
+$TWO + nice inside the house.
+
+I know + $TWO + hard,but you”ll be okay.
+
+She said + $TWO + only a fifteen-minute drive.
+
+$TWO + fun to go to the fair.
+
+#
+$ONE=
+::its
+it's;wrong
+
+$TWO=
+::it's
+its;wrong
+@
