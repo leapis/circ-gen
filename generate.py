@@ -245,7 +245,7 @@ def handleRelations(strings,inputs):
     return newStrings, associations, answerStrings
 
 def tokenize(token,index):
-    return '" + ' + token + index + '.strip() + "'
+    return '" + ' + token + index + '.trim() + "'
 
 def sanitize(word):
     """return a sanitized sentence (all good characters, no extra whitespace)"""
