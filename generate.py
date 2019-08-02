@@ -19,7 +19,7 @@ settings    = {
         }
 RELATIONS   = []
 
-Relation = lambda token, modifier, initializer:{'token':token,'mod':modifier,'init':initializer}
+Relation = lambda name, token, modifier, initializer:{'name': name, 'token':token,'mod':modifier,'init':initializer}
 Input = lambda name, answer, distractors:{'name':name, 'answer':answer, 'distractors':distractors}
 Association = lambda token, index:{'token':token,'index':index}
 
@@ -31,17 +31,21 @@ def getRelationByToken(relationName):
     return None #possible failure here if expecting object- don't use dynamically
 
 RELATIONS.append({
+    'name': 'SUBJECT',
     'token':'PROPERNOUN', 
     'init':'SubjectModel {name} = JournalismController.selectRandom(subjectAccess.selectByNounType(Arrays.asList(new String[] {{"PROPERNAME"}}), Arrays.asList(Gender.values())))',
-    'mod':'.getSubject()','index':-1})
+    'mod':'.getSubject()',
+    'index':-1})
 RELATIONS.append({
+    'name': getRelationByToken('PROPERNOUN')['name'],
     'token':'LASTNAME', 
-    'init':getRelationByToken('PROPERNOUN')['init'],
+    'init': getRelationByToken('PROPERNOUN')['init'],
     'mod':'.getSubject_last_name()',
     'index':-1})
 RELATIONS.append({
+    'name': getRelationByToken('PROPERNOUN')['name'],
     'token':'PRONOUN',
-    'init':getRelationByToken('PROPERNOUN')['init'],
+    'init': getRelationByToken('PROPERNOUN')['init'],
     'mod':'.getPronoun()',
     'index':-1})
 
@@ -51,12 +55,12 @@ def generateOutput():
     setFlags(inputFlags, inputFile)
     
     print("Parsing Input...")
-    strings, associations, inputs = gen(inputFile)
+    strings, associations, inputs, answerStrings = gen(inputFile)
 
     print("Writing to {file}".format(file=OUTPUT))
-    writeToFile(OUTPUT, strings, associations, inputs)
+    writeToFile(OUTPUT, strings, associations, inputs, answerStrings)
 
-def writeToFile(outputName, strings, associations, inputs):
+def writeToFile(outputName, strings, associations, inputs, answerStrings):
     print("writing to {o}".format(o=outputName))
     print("Strings:")
     for string in strings:
@@ -67,6 +71,86 @@ def writeToFile(outputName, strings, associations, inputs):
     print("inputs:")
     for input in inputs:
         print(input)
+    #open output stream
+    out = open("output/"+OUTPUT,"w+")
+    #write java imports
+    out.write(sd.imports)
+    #write PTEID info
+    ##out.write(sd.PTEID(MC_PTE_ID, OA_PTE_ID))
+    #write class NAME
+    out.write(sd.generateClassName(CLASSNAME))
+    #instantiate DAOs
+    #TODO only instantiate necessary DAOs
+    out.write(sd.DAOs)
+    #instantiate models
+    out.write(instantiateModels(associations))
+    #instantiate model strings
+    out.write(instantiateModelStrings(associations))
+    #write global lists
+    out.write(sd.GLOBAL_LISTS)
+    #write constructor
+    out.write(sd.generateConstructorName(CLASSNAME))
+    #generate varLists
+    out.write(generateVariableLists(inputs))
+    #initialize sentences
+    out.write(generateSentences(strings, answerStrings))
+    #end constructor
+    out.write(sd.CONSTRUCTOR_END)
+    #end class
+    out.write(sd.generateMiddleFiller())
+def instantiateModels(assocs):
+    toRet = ""   
+    indexed = []
+    for assoc in assocs:
+        if(assoc['index'] not in indexed):
+            assocRelation = getRelationByToken(assoc['token'])
+            toRet += "\n" + assocRelation['init'].format(name = assocRelation['name'] + assoc['index']) + ";"
+            indexed.append(assoc['index'])
+    print(toRet)
+    return toRet
+
+def instantiateModelStrings(assocs):
+    toRet = ""
+    for assoc in assocs:
+        assocRelation = getRelationByToken(assoc['token'])
+        toRet += "\nString " + assoc['token'] + assoc['index'] + " = " + assocRelation['name'] + assoc['index'] + assocRelation['mod'] + ";"
+    print(toRet)
+    return toRet
+
+def generateVariableLists(inputs):
+    toRet = ""
+    for input in inputs:
+        answerCount = len(input['answer'])
+        toRet += """
+    String {word}Answer = "";
+    distractorIndex = 0;
+    ArrayList<String> {word}List = new ArrayList<String>();
+    chosen = rand.nextInt({num});
+    """.format(word=input['name'], num = answerCount)
+        for i in range(answerCount):
+            toRet +="""
+    if (chosen == {num}) {{
+        {word}Answer = "{answer}\";""".format(num=i, word=input['name'], answer=input['answer'][i])
+            for distractor in input['distractors'][i]:
+                toRet += """
+                {word}List.add("{distract}".trim());""".format(distract=distractor['text'], word=input['name'])
+            toRet +="""
+                varList.add({word}List);
+            }}
+            """.format(word=input['name'])
+    return toRet
+    
+def generateSentences(strings, answerStrings):
+    toRet = """
+    ArrayList<String> sentenceList = new ArrayList<String>();
+    ArrayList<Tuple> distractorList = new ArrayList<Tuple>();
+    """
+    for i, string in enumerate(answerStrings):
+        toRet += """
+        sentenceList.add("{sentence}");""".format(sentence=string)
+        toRet += """
+        distractorList.add(new Tuple("{sentence}",varList));""".format(sentence = strings[i])
+    return toRet
 
 def setFlags(inputFlags, inputFile):
     """Reads header and sets global variables based on flags"""
@@ -89,12 +173,13 @@ def gen(inputFile):
     strings = []
     associations = []
     inputs = []
+    answerStrings = []
     
     strings = readStrings(inputFile)
     inputs = readInputs(inputFile)
-    strings, associations = handleRelations(strings,inputs)
+    strings, associations, answerStrings = handleRelations(strings,inputs)
 
-    return strings, associations, inputs
+    return strings, associations, inputs, answerStrings
 
 def readStrings(inputFile):
     """generate string, relation, and answer data from the input file"""
@@ -138,6 +223,7 @@ def addAnswerAsDistractor(inputs, string):
 
 def handleRelations(strings,inputs):
     newStrings = []
+    answerStrings = []
     associations = []
     for string in strings:
         for relation in RELATIONS:
@@ -148,16 +234,19 @@ def handleRelations(strings,inputs):
                 string = re.sub('\$'+token+index,tokenize(token,index),string)
                 if(Association(token,index) not in associations):
                     associations.append(Association(token,index))
-        for token in inputs:
+        answerString = ""
+        for i, token in enumerate(inputs):
             token = token['name']
             while('$'+token.upper() in string.upper()):
-                string = re.sub('\\$' + token, tokenize(token,''), string, flags=re.IGNORECASE)
+                answerString = re.sub('\\$' + token, tokenize(token, 'Answer'), string, flags=re.IGNORECASE)
+                string = re.sub('\\$' + token, """%{i}$s""".format(i=i+1), string, flags=re.IGNORECASE)
+        answerStrings.append(answerString)
         newStrings.append(string)
-    return newStrings, associations
+    return newStrings, associations, answerStrings
 
 def tokenize(token,index):
     return '" + ' + token + index + '.strip() + "'
-            
+
 def sanitize(word):
     """return a sanitized sentence (all good characters, no extra whitespace)"""
     for character in IGNORE:
