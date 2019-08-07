@@ -258,5 +258,11 @@ def sanitize(word):
         word = word[:-1]
     return word
 
+def validPrefixes(prefixes):
+    for i, targetPrefix in enumerate(prefixes):
+        for j, otherPrefix in enumerate(prefixes):
+            if(targetPrefix == otherPrefix and i != j):
+                return False
+    return True
 
 generateOutput()
